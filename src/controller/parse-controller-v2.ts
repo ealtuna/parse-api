@@ -1,4 +1,5 @@
 import { Post, Body, JsonController, BadRequestError } from "routing-controllers";
+import { Inject } from 'typedi';
 
 import { ParseController } from "./parse-controller";
 import { ParseInput } from "../input/parse-input";
@@ -8,11 +9,7 @@ import { ParseService } from "../service/parse-service";
 @JsonController("/v2")
 export class ParseControllerV2 implements ParseController {
 
-    parseService: ParseService;
-
-    constructor() {
-        this.parseService = new ParseService();
-    }
+    constructor(@Inject('ParseService') private parseService: ParseService) {}
     
     @Post("/parse")
     parse(@Body({ required: true }) body: ParseInput): Client {

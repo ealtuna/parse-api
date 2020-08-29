@@ -1,4 +1,5 @@
 import { JsonController, Param, Body, Get, Post, Put, Delete } from "routing-controllers";
+import { Inject } from 'typedi';
 
 import { ParseInput } from "../input/parse-input";
 import { ParseController } from "./parse-controller";
@@ -11,11 +12,7 @@ export const LAST_NAME_SUFFIX = "000";
 @JsonController("/v1")
 export class ParseControllerV1 implements ParseController {
 
-    parseService: ParseService;
-
-    constructor() {
-        this.parseService = new ParseService();
-    }
+    constructor(@Inject('ParseService') private parseService: ParseService) {}
 
     @Post("/parse")
     parse(@Body({ required: true }) body: ParseInput): Client {

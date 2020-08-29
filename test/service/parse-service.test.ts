@@ -1,4 +1,4 @@
-import { ParseService } from "../../src/service/parse-service";
+import { ParseService, ParseServiceImpl } from "../../src/service/parse-service";
 import { Client } from "../../src/model/client";
 
 describe("ParseService", () => {
@@ -6,7 +6,7 @@ describe("ParseService", () => {
         let parseService: ParseService;
 
         beforeAll(() => {
-            parseService = new ParseService();
+            parseService = new ParseServiceImpl();
         });
 
         it("should parse correct formated expression", () => {
