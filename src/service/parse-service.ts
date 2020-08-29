@@ -1,5 +1,4 @@
 import { BadRequestError } from "routing-controllers";
-import { Service } from "typedi";
 
 import { Client } from "../model/client";
 import { ParseInput, PARSE_INPUT_DATA_FORMAT } from "../input/parse-input";
