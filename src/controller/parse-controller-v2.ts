@@ -14,14 +14,14 @@ export class ParseControllerV2 implements ParseController {
     @Post("/parse")
     parse(@Body({ required: true }) body: ParseInput): Client {
         const client = this.parseService.parse(body);
-        const [, id0, id1] = client.clientId.match(/(\d{3})(\d{4})/);
+        const [, id0, id1] = client.clientId.match(/(\d{3})(\d{4})/) ?? [];
         if (!id0 || !id1) {
             throw new BadRequestError("Incorrect clientId component format");
         }
-        return new Client(
-            client.firstName,
-            client.lastName,
-            `${id0}-${id1}`
-        );
+        return {
+            firstName: client.firstName,
+            lastName: client.lastName,
+            clientId: `${id0}-${id1}`
+        };
     }
 }

@@ -1,7 +1,5 @@
-export class Client {
-    constructor(
-        public firstName: string,
-        public lastName: string,
-        public clientId: string
-    ) {}
+export interface Client {
+    firstName: string;
+    lastName: string;
+    clientId: string;
 }

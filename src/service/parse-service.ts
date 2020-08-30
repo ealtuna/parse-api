@@ -9,10 +9,10 @@ export interface ParseService {
 
 export class ParseServiceImpl implements ParseService {
     public parse(parseInput: ParseInput): Client {
-        const [, firstName, lastName, clientId] = parseInput.data.match(PARSE_INPUT_DATA_FORMAT);
+        const [, firstName, lastName, clientId] = parseInput.data.match(PARSE_INPUT_DATA_FORMAT) ?? [];
         if (!firstName || !lastName || !clientId) {
             throw new BadRequestError("Incorrect data format");
         }
-        return new Client(firstName, lastName, clientId);
+        return { firstName, lastName, clientId };
     }
 }

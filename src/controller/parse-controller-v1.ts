@@ -16,11 +16,11 @@ export class ParseControllerV1 implements ParseController {
 
     @Post("/parse")
     parse(@Body({ required: true }) body: ParseInput): Client {
-        const originalClient = this.parseService.parse(body);
-        return new Client(
-            originalClient.firstName + FIRST_NAME_SUFFIX,
-            originalClient.lastName + LAST_NAME_SUFFIX,
-            originalClient.clientId
-        );
+        const client = this.parseService.parse(body);
+        return {
+            firstName: `${client.firstName}${FIRST_NAME_SUFFIX}`,
+            lastName: `${client.lastName}${LAST_NAME_SUFFIX}`,
+            clientId: client.clientId
+        };
     }
 }
