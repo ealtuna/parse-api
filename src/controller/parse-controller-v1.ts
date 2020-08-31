@@ -11,16 +11,15 @@ export const LAST_NAME_SUFFIX = "000";
 
 @JsonController("/v1")
 export class ParseControllerV1 implements ParseController {
+  constructor(@Inject("ParseService") private parseService: ParseService) {}
 
-    constructor(@Inject("ParseService") private parseService: ParseService) {}
-
-    @Post("/parse")
-    parse(@Body({ required: true }) body: ParseInput): Client {
-        const client = this.parseService.parse(body);
-        return {
-            firstName: `${client.firstName}${FIRST_NAME_SUFFIX}`,
-            lastName: `${client.lastName}${LAST_NAME_SUFFIX}`,
-            clientId: client.clientId
-        };
-    }
+  @Post("/parse")
+  parse(@Body({ required: true }) body: ParseInput): Client {
+    const client = this.parseService.parse(body);
+    return {
+      firstName: `${client.firstName}${FIRST_NAME_SUFFIX}`,
+      lastName: `${client.lastName}${LAST_NAME_SUFFIX}`,
+      clientId: client.clientId,
+    };
+  }
 }
