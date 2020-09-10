@@ -8,15 +8,15 @@ describe("POST /v2/parse", () => {
     return request(app)
       .post("/api/v2/parse")
       .send({
-        data: "JOHN0000MICHAEL0009994567",
+        data: "HENRY0000FORD0005554567",
       })
       .expect(200)
       .expect({
         statusCode: 200,
         data: {
-          firstName: "JOHN",
-          lastName: "MICHAEL",
-          clientId: "999-4567",
+          firstName: "HENRY",
+          lastName: "FORD",
+          clientId: "555-4567",
         },
       });
   });

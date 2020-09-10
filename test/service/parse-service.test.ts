@@ -13,17 +13,17 @@ describe("ParseService", () => {
     });
 
     it("should parse correct formated expression", () => {
-      const client = parseService.parse({ data: "JOHN0000MICHAEL0009994567" });
+      const client = parseService.parse({ data: "HENRY0000FORD0005554567" });
       expect(client).toStrictEqual({
-        firstName: "JOHN",
-        lastName: "MICHAEL",
-        clientId: "9994567",
+        firstName: "HENRY",
+        lastName: "FORD",
+        clientId: "5554567",
       } as Client);
     });
 
     it("should throw an error with incorrect formated expression", () => {
       expect(() => {
-        parseService.parse({ data: "JOHN0000MICHAEL" });
+        parseService.parse({ data: "HENRY0000FORD" });
       }).toThrowError();
     });
   });

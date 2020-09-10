@@ -4,13 +4,13 @@ import app from "../../src/app";
 
 export const WRONG_INPUT_EXAMPLES = [
   "",
-  "MICHAEL0009994567",
-  "00009994567",
-  "JOHN000MICHAEL0009994567",
-  "JOHN0000MICHAEL00009994567",
-  "JOHN0000MICHAEL000999456",
-  "JOHN0000MICHAEL0009994567A",
-  "7JOHN0000MICHAEL0009994567A",
+  "FORD0005554567",
+  "00005554567",
+  "HENRY000FORD0005554567",
+  "HENRY0000FORD00005554567",
+  "HENRY0000FORD000555456",
+  "HENRY0000FORD0005554567A",
+  "7HENRY0000FORD0005554567A",
 ];
 
 describe("POST /v1/parse", () => {
@@ -18,15 +18,15 @@ describe("POST /v1/parse", () => {
     return request(app)
       .post("/api/v1/parse")
       .send({
-        data: "JOHN0000MICHAEL0009994567",
+        data: "HENRY0000FORD0005554567",
       })
       .expect(200)
       .expect({
         statusCode: 200,
         data: {
-          firstName: "JOHN0000",
-          lastName: "MICHAEL000",
-          clientId: "9994567",
+          firstName: "HENRY0000",
+          lastName: "FORD000",
+          clientId: "5554567",
         },
       });
   });
